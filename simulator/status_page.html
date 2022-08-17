@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Communication Data</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <script src='chart.min.js'></script>
+</head>
+<body>
+<section class="fixed-container errors-container">
+    <h2>Errors</h2>
+</section>
+<section class="fixed-container">
+    <h2>Voice Call</h2>
+    <table class="voice-calls">
+        <thead>
+        <tr>
+            <th>Country</th>
+            <th>Bandwidth</th>
+            <th>Response Time</th>
+            <th>Provider</th>
+            <th>Connection Stability</th>
+            <th>TTFB</th>
+            <th>Voice Purity</th>
+            <th>Median of Call Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="empty">
+            <td colspan="8">No voice call data</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<section class="fixed-container wrap">
+    <div>
+        <h2>SMS</h2>
+        <table class="sms">
+            <thead>
+            <tr>
+                <th>Country</th>
+                <th>Bandwidth</th>
+                <th>Response Time</th>
+                <th>Provider</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="empty">
+                <td colspan="8">No SMS data</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2>Support</h2>
+        <div class="support-info">
+            <p class="support-time"></p>
+            <p>minutes</p>
+        </div>
+        <small>Average Mailing Time</small>
+    </div>
+    <div>
+        <h2>MMS</h2>
+        <table class="mms">
+            <thead>
+            <tr>
+                <th>Country</th>
+                <th>Bandwidth</th>
+                <th>Response Time</th>
+                <th>Provider</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="empty">
+                <td colspan="8">No MMS data</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2>Billing</h2>
+        <table class="billing">
+            <tbody>
+            <tr class="empty">
+                <td colspan="2">No billing data</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2>E-mail</h2>
+        <div class="charts"></div>
+    </div>
+    <div style="width: 100%;">
+        <h2>Incidents History</h2>
+        <table class="incidents" style="width: 100%;">
+            <thead>
+            <tr>
+                <th style="width: 70%;">Topic</th>
+                <th style="width: 30%;">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="empty">
+                <td colspan="2">No incidents data</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
