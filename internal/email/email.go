@@ -12,6 +12,8 @@ import (
 	"sync"
 )
 
+//Функция обработки результирующих данных о системе эмейл,возвращающая топ 3 самых быстрых и топ 3 самых медленных провайдеров
+
 func GetResultEmailData(path string, wg *sync.WaitGroup) map[string][][]entities.EmailData {
 	out := make(chan map[string][][]entities.EmailData)
 	wg.Add(1)
@@ -53,6 +55,8 @@ func GetResultEmailData(path string, wg *sync.WaitGroup) map[string][][]entities
 	return result
 }
 
+//Функция для удаления дубликатов стран,итерируемся по срезу и создаем другой срез уже без дубликатов.
+
 func removeDuplicates(slice []string) []string {
 	keys := make(map[string]bool)
 	list := []string{}
@@ -64,6 +68,8 @@ func removeDuplicates(slice []string) []string {
 	}
 	return list
 }
+
+//Функция сбора данных эмейл системы.
 
 func emailDataReader(path string) []entities.EmailData {
 	var result []entities.EmailData
@@ -94,6 +100,8 @@ func emailDataReader(path string) []entities.EmailData {
 	}
 	return result
 }
+
+//Функция проверки на валидность полученных данных.
 
 func checkEmailData(value []string) bool {
 	if value[0] == sms.CountryAlpha2()[value[0]] {

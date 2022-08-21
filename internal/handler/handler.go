@@ -10,6 +10,8 @@ import (
 	"statusPage/internal/resultData"
 )
 
+//Функция создания связей между роутером и хранилищем(кэш)
+
 func Build(router *chi.Mux, store *resultData.ResultDataStorage) {
 	router.Use(middleware.Recoverer)
 
@@ -18,6 +20,8 @@ func Build(router *chi.Mux, store *resultData.ResultDataStorage) {
 	router.Get("/", controller.GetData)
 
 }
+
+//Создание контроллера для управления роутером
 
 type Controller struct {
 	storage *resultData.ResultDataStorage
@@ -28,6 +32,8 @@ func NewController(storage *resultData.ResultDataStorage) *Controller {
 		storage: storage,
 	}
 }
+
+//Хэндлер контроллера собирающий ответ воедино
 
 func (c *Controller) GetData(w http.ResponseWriter, r *http.Request) {
 	var result entities.ResultT

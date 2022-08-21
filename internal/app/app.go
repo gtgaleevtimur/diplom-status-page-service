@@ -14,6 +14,8 @@ import (
 	"time"
 )
 
+//Функция инициализации и запуска сервера,реализован graceful shutdown
+
 func Run() {
 	var wait time.Duration
 	flag.DurationVar(&wait, "graceful-timeout", time.Second*15,
@@ -42,6 +44,8 @@ func Run() {
 	log.Println("shutting down")
 	os.Exit(0)
 }
+
+//Функция инициализации хэндлера c созданием хранилища и автосчетчика id внутри хранилища
 
 func service() http.Handler {
 	storage := resultData.NewStorage()

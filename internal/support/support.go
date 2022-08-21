@@ -9,6 +9,8 @@ import (
 	"sync"
 )
 
+//Функция фильтрации и сортировки результирующих данных
+
 func GetResultSupportData(wg *sync.WaitGroup) []int {
 	out := make(chan []int)
 	wg.Add(1)
@@ -39,6 +41,8 @@ func GetResultSupportData(wg *sync.WaitGroup) []int {
 	return result
 
 }
+
+//Функция сбора данных о системе поддержки
 
 func supportRequest() []entities.SupportData {
 	var result []entities.SupportData

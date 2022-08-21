@@ -13,6 +13,8 @@ import (
 	"sync"
 )
 
+//Функция сортировки и фильтрации результирующих данных
+
 func GetResultMMSData(wg *sync.WaitGroup) [][]entities.MMSData {
 	out := make(chan [][]entities.MMSData)
 	wg.Add(1)
@@ -41,6 +43,8 @@ func GetResultMMSData(wg *sync.WaitGroup) [][]entities.MMSData {
 	var result = <-out
 	return result
 }
+
+//Функция сбора даных о системе ммс
 
 func mmsRequest() []entities.MMSData {
 	var result []entities.MMSData
@@ -73,6 +77,8 @@ func mmsRequest() []entities.MMSData {
 		return []entities.MMSData{}
 	}
 }
+
+//Функция проверки валидности полученных данных
 
 func checkMMS(value entities.MMSData) bool {
 	if value.Country == sms.CountryAlpha2()[value.Country] {

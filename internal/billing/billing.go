@@ -9,6 +9,8 @@ import (
 	"sync"
 )
 
+//Создание битовой маски-константы для сравнения
+
 const (
 	CreateCustomerMask int64 = 1 << iota
 	PurchaseMask
@@ -17,6 +19,8 @@ const (
 	FraudControlMask
 	CheckoutPageMask
 )
+
+//Функция сбора о системе биллинг,ее обработка и возврат результирующей структуры
 
 func BillingDataReader(path string, wg *sync.WaitGroup) entities.BillingData {
 	out := make(chan entities.BillingData)

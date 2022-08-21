@@ -11,6 +11,8 @@ import (
 	"sync"
 )
 
+//Функция сбора данных о системе голосовых вызовов.
+
 func VoiceCallReader(path string, wg *sync.WaitGroup) []entities.VoiceCallData {
 	out := make(chan []entities.VoiceCallData)
 	wg.Add(1)
@@ -58,6 +60,8 @@ func VoiceCallReader(path string, wg *sync.WaitGroup) []entities.VoiceCallData {
 	var result = <-out
 	return result
 }
+
+//Функция проверки на валидность полученных данных
 
 func checkVoiceCall(value []string) bool {
 	if value[0] == sms.CountryAlpha2()[value[0]] {

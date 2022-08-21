@@ -20,11 +20,16 @@ type ResultDataStorage struct {
 	sync.Mutex
 }
 
+//Функция создания хранилища. -31 секунда при инициализации кэша,потому что кэш хранится 30 секунд.
+//Для своевременного первого ответа.
+
 func NewStorage() *ResultDataStorage {
 	return &ResultDataStorage{
 		Time: time.Now().Add(-31 * time.Second),
 	}
 }
+
+//Функция аккумуляирующая все полученные данные
 
 func (r *ResultDataStorage) GetResultData() entities.ResultSetT {
 	r.Lock()
@@ -59,6 +64,8 @@ func (r *ResultDataStorage) GetResultData() entities.ResultSetT {
 		return r.Storage
 	}
 }
+
+//Функция проверки результирующей структуры
 
 func (r *ResultDataStorage) IsFull() bool {
 	r.Lock()

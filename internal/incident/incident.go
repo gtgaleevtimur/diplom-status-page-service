@@ -10,6 +10,8 @@ import (
 	"sync"
 )
 
+//Функция сортировки и фильтрации результирующих данных
+
 func GetResultIncidentData(wg *sync.WaitGroup) []entities.IncidentData {
 	out := make(chan []entities.IncidentData)
 	wg.Add(1)
@@ -28,6 +30,8 @@ func GetResultIncidentData(wg *sync.WaitGroup) []entities.IncidentData {
 	var result = <-out
 	return result
 }
+
+//Функция сбора данных о системе инцидентов
 
 func incidentDataCollection() []entities.IncidentData {
 	var result []entities.IncidentData
