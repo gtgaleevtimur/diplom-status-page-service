@@ -1,8 +1,8 @@
 package sms
 
 import (
-	"encoding/csv"
 	"github.com/jinzhu/copier"
+	"io/ioutil"
 	"log"
 	"os"
 	"sort"
@@ -58,21 +58,20 @@ func smsReader(path string) []entities.SMSData {
 		log.Fatal("Cannot open sms file:", err)
 	}
 	defer file.Close()
-
-	csvReader := csv.NewReader(file)
-	csvReader.Comma = ';'
-	rows, err := csvReader.ReadAll()
+	reader, err := ioutil.ReadAll(file)
 	if err != nil {
-		log.Println("Cannot read sms file:", err)
+		log.Fatal("Cannot read email file:", err)
 	}
-	for _, row := range rows {
-		if len(row) == 4 {
-			if checkSMS(row) {
+	lines := strings.Split(string(reader), "\n")
+	for _, value := range lines {
+		splitVal := strings.Split(value, ";")
+		if len(splitVal) == 4 {
+			if checkSMS(splitVal) {
 				res := entities.SMSData{
-					Country:      CountryFromAlpa(row[0]),
-					Bandwidth:    row[1],
-					ResponseTime: row[2],
-					Provider:     row[3],
+					Country:      CountryFromAlpa(splitVal[0]),
+					Bandwidth:    splitVal[1],
+					ResponseTime: splitVal[2],
+					Provider:     splitVal[3],
 				}
 				result = append(result, res)
 			}
